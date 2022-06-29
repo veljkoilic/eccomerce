@@ -12,5 +12,5 @@ const ProductSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
+ProductSchema.index({'$**': 'text'});
 module.exports = mongoose.model('Product', ProductSchema);

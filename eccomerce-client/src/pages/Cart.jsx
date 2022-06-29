@@ -86,7 +86,7 @@ export const Cart = () => {
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText type="total">Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryButton>Checkout Now</SummaryButton>
           </Summary>

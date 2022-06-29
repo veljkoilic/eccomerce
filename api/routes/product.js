@@ -31,6 +31,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 //Delete product
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
@@ -40,6 +41,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(error);
   }
 });
+
 //GET Product
 router.get("/find/:id", async (req, res) => {
   try {
@@ -49,7 +51,8 @@ router.get("/find/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
-//GET All users
+
+//GET All products
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
@@ -68,4 +71,17 @@ router.get("/", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// Text search
+router.get("/search/:query", async (req, res)=>{
+  try{
+    const products = await Product.find({$text: {$search: req.params.query}})
+       .limit(5)
+       res.status(200).json(products)
+       console.log(products)
+  }catch(error){
+    console.log(error)
+  }
+})
+
 module.exports = router;

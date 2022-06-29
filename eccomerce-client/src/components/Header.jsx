@@ -5,19 +5,46 @@ import { faSearch, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import store from "../redux/store";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
 
 function Header() {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  const [searchedProducts, setSearchedProducts] = useState([])
+  const [searchInput, setSearchInput] = useState('')
+
+  useEffect(()=>{
+    const getSearchProducts = async () => {
+      try {
+        const res = await publicRequest.get(searchInput? "http://localhost:5000/api/products/search/" + searchInput : "http://localhost:5000/api/products/search/*");
+        console.log(res.data)
+        setSearchedProducts(res.data);
+      } catch (err) {}
+    };
+    getSearchProducts()
+  },[searchInput])
   return (
     <Container>
       <Wrapper>
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search here!" />
+            <Input placeholder="Search here!" value={searchInput} onChange={(e)=>setSearchInput(e.target.value)}/>
             <FontAwesomeIcon icon={faSearch} />
           </SearchContainer>
+          <div className="searchResults">
+              {searchedProducts.map(product=>{
+                return(
+                  <Link className="link" to={`/product/${product._id}`} onClick={()=>setSearchInput("")}>
+
+                  <span>
+                    <img src={product.img} width="20px" alt="" />
+                      {product.title}
+                  </span>
+                  </Link>
+                )
+              })}
+            </div>
         </Left>
         <Center>
           <Link className="link" to="/">
@@ -44,7 +71,7 @@ const Container = styled.div`
   top: 0;
   z-index: 11;
   background-color: #fff;
-  overflow-x: hidden;
+
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -56,6 +83,32 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  position: relative;
+  .searchResults{
+    position: absolute;
+    top: 40px;
+    left: 42px;
+    background-color: white;
+    width: 85%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    span{
+      border-bottom: 1px solid lightgray;
+      padding: 5px;
+      cursor: pointer;
+      display:flex;
+      align-items: center;
+      &:hover{
+        background-color: black;
+        color: #fff;
+      }
+      img{
+        width: 25px;
+        padding: 0 5px;
+      }
+    }
+  }
 `;
 const Language = styled.span`
   font-size: 14px;
