@@ -78,7 +78,6 @@ router.get("/search/:query", async (req, res)=>{
     const products = await Product.find({$text: {$search: req.params.query}})
        .limit(5)
        res.status(200).json(products)
-       console.log(products)
   }catch(error){
     console.log(error)
   }

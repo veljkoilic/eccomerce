@@ -17,7 +17,6 @@ function Header() {
     const getSearchProducts = async () => {
       try {
         const res = await publicRequest.get(searchInput? "http://localhost:5000/api/products/search/" + searchInput : "http://localhost:5000/api/products/search/*");
-        console.log(res.data)
         setSearchedProducts(res.data);
       } catch (err) {}
     };
