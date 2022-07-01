@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mobile from "../responsive";
+import {mobile, tablet} from "../responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
@@ -113,6 +113,7 @@ const Left = styled.div`
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
+  ${mobile({ display: "none" })}
 `;
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
