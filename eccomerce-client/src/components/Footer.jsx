@@ -69,6 +69,7 @@ export const Footer = () => {
 };
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 const Left = styled.div`
   flex: 1;
@@ -82,6 +83,8 @@ const Center = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 20px 20px 20px 100px;
+
 `;
 const Title = styled.h3`
   margin-bottom: 30px;
@@ -99,13 +102,15 @@ const ListItem = styled.li`
   margin-bottom: 10px;
 `;
 const Right = styled.div`
+  padding: 20px 20px 20px 100px;
+
 h3{
-    align-self: flex-end;
+    /* align-self: flex-end; */
 }
   flex: 1;
-  padding: 20px 100px 20px 20px;
+  /* padding: 20px 100px 20px 20px; */
   display: flex;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   flex-direction: column;
 `;
 const ContactItem = styled.p`
@@ -122,7 +127,7 @@ const Logo = styled.h3`
 `;
 const Payment = styled.img`
   width: 220px;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   margin: 10px 5px 0 0;
 `;
 const Desc = styled.p`
