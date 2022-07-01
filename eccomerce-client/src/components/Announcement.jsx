@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { mobile, tablet } from "../responsive"
 
 export const Announcement = () => {
   return (
@@ -16,4 +17,13 @@ const Container = styled.div`
     justify-content: center;
     font-size: 14 px;
     font-weight: 500;
+    text-align: center;
+    ${tablet({
+     padding: "5px 20px"
+    })}
+    
+    ${mobile({
+     padding: "20px"
+    })}
+
 `

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { sliderItems } from "../data";
+import { mobile, tablet } from "../responsive";
 
 export const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -65,6 +66,12 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  ${tablet({
+    height: "50vh"
+  })}
+  ${mobile({
+    height: "25vh",
+  })}
 `;
 const Arrow = styled.div`
   width: 50px;
@@ -99,6 +106,7 @@ const Wrapper = styled.div`
   transition: 1s;
   /* transform: translate(0vw); */
   transform: translate(-${props=>props.order}00vw);
+  
 `;
 const Slide = styled.div`
   width: 100vw;
@@ -106,6 +114,13 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   /* padding: 70px; */
+  ${tablet({
+    height: "80vh"
+  })}
+    ${mobile({
+    height: "25vh",
+  })}
+
 
   background-color: #${(props) => props.bg};
 `;
@@ -114,23 +129,52 @@ const ImgContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: flex-end;
+  ${tablet({
+    height: "75%"
+  })}
+  ${mobile({
+    height: "100%"
+  })}
 `;
 const Image = styled.img`
   height: 80%;
   margin-left: 50px;
+  ${mobile({
+    marginLeft: "30px"
+  })}
 `;
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  ${mobile({
+    paddingLeft: "10px"
+  })}
 `;
 const Title = styled.h1`
   font-size: 70px;
+  ${tablet({
+    fontSize: "35px"
+  })}
+    ${mobile({
+    fontSize: "14px"
+  })}
 `;
 const Desc = styled.p`
   margin: 50px 0;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+  ${tablet({
+    fontSize: "14px",
+    letterSpacing: "0px"
+
+  })}
+  ${mobile({
+    margin: "15px 0",
+    fontSize: "10px",
+
+  })}
+
 `;
 const Button = styled.button`
   padding: 10px 15px;
@@ -139,6 +183,16 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   position: absolute;
+  ${tablet({
+    fontSize: "12px"
+  })}
+  ${mobile({
+    fontSize: "10px",
+    border: "1px solid black",
+    padding: "5px 10px"
+
+  })}
+
   svg, rect{
     position: absolute;
     top: 0;
@@ -146,6 +200,10 @@ const Button = styled.button`
     width: 100%;
     height: 100%;
     fill: transparent;
+    ${mobile({
+    width: "0",
+    height: "0"    
+  })}
   }
   rect{
       stroke: #000;

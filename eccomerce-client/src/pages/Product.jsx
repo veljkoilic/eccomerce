@@ -10,6 +10,7 @@ import { publicRequest } from "../requestMethods";
 import { useState, useEffect } from "react";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { mobile } from "../responsive";
 
 export const Product = () => {
   const location = useLocation();
@@ -93,12 +94,18 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  justify-content: centers;
+  justify-content: center;
+  ${mobile({
+    flexDirection: "column"
+  })}
 `;
 const ImgContainer = styled.div`
   flex: 3;
   display: flex;
   justify-content: flex-end;
+  ${mobile({
+    justifyContent: "center"
+  })}
 `;
 const Image = styled.img`
   /* width: 100%; */
@@ -117,6 +124,9 @@ const Title = styled.h1`
 const Desc = styled.p`
   margin: 20px 0;
   width: 70%;
+  ${mobile({
+    width: "100%"
+  })}
 `;
 const Price = styled.span`
   font-weight: 100;
@@ -127,6 +137,9 @@ const FilterContainer = styled.div`
   justify-content: space-between;
   width: 60%;
   margin: 30px 0;
+  ${mobile({
+    width: "100%"
+  })}
 `;
 const Filter = styled.div`
   display: flex;
@@ -163,7 +176,9 @@ const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
   width: 60%;
-
+  ${mobile({
+    width: "100%"
+  })}
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -172,6 +187,7 @@ const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
+  
   svg {
     cursor: pointer;
   }

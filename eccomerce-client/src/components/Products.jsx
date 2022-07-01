@@ -45,6 +45,6 @@ export const Products = ({ category, filters, sort }) => {
 };
 const Container = styled.div`
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+display: flex;
+flex-wrap: wrap;
 `;

@@ -27,7 +27,7 @@ export const ProductList = () => {
       <Title>{category.toUpperCase()}</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Products: </FilterText>
+          <FilterText>Filter: </FilterText>
           <Select name='color' onChange={handleFilters}>
             <Option disabled>
               Color
@@ -51,7 +51,7 @@ export const ProductList = () => {
           </Select>
         </Filter>
         <Filter>
-          <FilterText>Sort Products: </FilterText>
+          <FilterText>Sort: </FilterText>
           <Select onChange={e=>setSort(e.target.value)}>
             <Option value="newest">Newest</Option>
             <Option value="asc">Price (asc)</Option>
