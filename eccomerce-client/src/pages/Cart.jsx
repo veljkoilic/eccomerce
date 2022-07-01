@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import store from "../redux/store";
 import { changeAmount, removeFromCart } from "../redux/cartRedux";
 import { useEffect } from "react";
+import { mobile, tablet } from "../responsive";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -19,7 +20,7 @@ export const Cart = () => {
           <Image src={product.img} />
           <Details>
             <ProductName>
-              <b>Product: </b> {product.title}
+              {product.title}
             </ProductName>
             <ProductId>
               <b>ID: </b> {product._id}
@@ -60,8 +61,7 @@ export const Cart = () => {
         <Top>
           <TopButton>Continue Shopping</TopButton>
           <TopTexts>
-            <TopText>Shopping bag ({cart.quantity})</TopText>
-            <TopText>Wishlist (0)</TopText>
+
           </TopTexts>
           <TopButton type="filled">Checkout</TopButton>
         </Top>
@@ -103,10 +103,16 @@ const Wrapper = styled.div`
   width: 80%;
   margin: 0 auto;
   padding-bottom: 150px;
+  ${mobile({
+    width: "95%",
+    padding: '0'
+  })}
 `;
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
+  margin-bottom: 20px;
+
 `;
 const Top = styled.div`
   display: flex;
@@ -137,6 +143,9 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  ${tablet({
+    flexDirection: "column"
+  })}
 `;
 const Info = styled.div`
   flex: 3;
@@ -146,7 +155,7 @@ const Product = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
-  padding: 30px 0;
+  padding: 30px 20px;
   /* margin: 10px 0; */
   border-right: 1px solid #eee;
   &:last-of-type {
@@ -158,7 +167,13 @@ const ProductDetail = styled.div`
   display: flex;
 `;
 const Image = styled.img`
-  width: 200px;
+  /* width: 200px; */
+  height: 200px;
+  align-self: center;
+  ${tablet({
+    height: "150px",
+    
+  })}
 `;
 const Details = styled.div`
   padding: 20px;
@@ -169,8 +184,15 @@ const Details = styled.div`
     margin-top: 10px;
   }
 `;
-const ProductName = styled.h1``;
-const ProductId = styled.span``;
+const ProductName = styled.h1`
+  ${mobile({
+    fontSize: "18px"
+  })}`;
+const ProductId = styled.span`
+${tablet({
+  display: "none"
+})}
+`;
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
