@@ -19,4 +19,4 @@ In the api directory, you can run
 This runs the app in the development mode on http://localhost:5000/
 
 ## In Future updates
-Stripe checkout, responsive design
+Stripe checkout is in development
