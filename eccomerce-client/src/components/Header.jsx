@@ -44,6 +44,7 @@ function Header() {
             {searchedProducts.map((product) => {
               return (
                 <Link
+                  key={product._id}
                   className="link"
                   to={`/product/${product._id}`}
                   onClick={() => setSearchInput("")}
@@ -63,15 +64,12 @@ function Header() {
           </Link>
         </Center>
         <Right>
-
           <Link className="link" to="/register">
             <MenuItem>Register</MenuItem>
           </Link>
-            <Link className="link" to="/login">
+          <Link className="link" to="/login">
             <MenuItem>Sign in</MenuItem>
-
-            </Link>
-
+          </Link>
           <MenuItem>
             <Link to="/cart" className="link">
               <FontAwesomeIcon icon={faCartShopping} />
@@ -89,18 +87,29 @@ const Container = styled.div`
   top: 0;
   z-index: 11;
   background-color: #fff;
+  ${mobile({
+    marginBottom: "100px",
+  })}
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
+  background-color: #fff;
   display: flex;
   margin: 0 auto;
   max-width: 1024px;
+  ${mobile({
+    flexDirection: "column-reverse",
+    innerHeight: "max-content",
+  })}
 `;
 const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   position: relative;
+  ${mobile({
+    flexDirection: "column",
+  })}
   .searchResults {
     position: absolute;
     top: 40px;
@@ -155,6 +164,9 @@ const Center = styled.div`
 `;
 const Logo = styled.h1`
   font-weight: bold;
+  ${mobile({
+    margin: "15px 0",
+  })}
 `;
 const Right = styled.div`
   flex: 1;
@@ -162,10 +174,15 @@ const Right = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
+  ${mobile({
+    justifyContent: "center",
+    margin: "10px 0 ",
+  })}
 `;
 const MenuItem = styled.div`
   cursor: pointer;
   span {
+    min-width: 35px;
     transition: 1s all;
     color: #fff;
     font-size: 11px;

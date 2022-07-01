@@ -69,8 +69,8 @@ const Container = styled.div`
   ${tablet({
     height: "50vh"
   })}
-  ${tablet({
-    height: "25vh"
+  ${mobile({
+    height: "25vh",
   })}
 `;
 const Arrow = styled.div`
@@ -118,7 +118,7 @@ const Slide = styled.div`
     height: "80vh"
   })}
     ${mobile({
-    height: "25vh"
+    height: "25vh",
   })}
 
 
