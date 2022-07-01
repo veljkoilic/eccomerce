@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { mobile } from "../responsive";
 
 export const Newsletter = () => {
   return (
@@ -32,6 +33,7 @@ const Desc = styled.p`
   font-size: 24px;
   font-weight: 30;
   margin-bottom: 20px;
+  text-align: center;
 `;
 const InputContainer = styled.div`
   width: 50%;
@@ -40,6 +42,9 @@ const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border: 1px solid lightgray;
+  ${mobile({
+    width: "70%"
+  })}
 `;
 const Input = styled.input`
   border: none;
