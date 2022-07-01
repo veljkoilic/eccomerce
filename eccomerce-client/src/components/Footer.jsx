@@ -75,7 +75,7 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 20px 100px;
+  padding: 20px 60px 20px 60px;
 `;
 const Center = styled.div`
   flex: 1;
@@ -83,7 +83,7 @@ const Center = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 20px 20px 20px 100px;
+  padding: 20px 60px 20px 60px;
 
 `;
 const Title = styled.h3`
@@ -102,13 +102,13 @@ const ListItem = styled.li`
   margin-bottom: 10px;
 `;
 const Right = styled.div`
-  padding: 20px 20px 20px 100px;
+  padding: 20px 60px 20px 60px;
 
 h3{
     /* align-self: flex-end; */
 }
   flex: 1;
-  /* padding: 20px 100px 20px 20px; */
+  /* padding: 20px 60px 20px 20px; */
   display: flex;
   /* align-items: flex-end; */
   flex-direction: column;

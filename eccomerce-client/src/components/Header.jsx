@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {mobile, tablet} from "../responsive";
+import { mobile, tablet } from "../responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
@@ -10,50 +10,68 @@ import { publicRequest } from "../requestMethods";
 
 function Header() {
   const cart = useSelector((state) => state.cart);
-  const [searchedProducts, setSearchedProducts] = useState([])
-  const [searchInput, setSearchInput] = useState('')
+  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     const getSearchProducts = async () => {
       try {
-        const res = await publicRequest.get(searchInput? "http://localhost:5000/api/products/search/" + searchInput : "http://localhost:5000/api/products/search/*");
-        console.log(res.data)
+        const res = await publicRequest.get(
+          searchInput
+            ? "http://localhost:5000/api/products/search/" + searchInput
+            : "http://localhost:5000/api/products/search/*"
+        );
+        console.log(res.data);
         setSearchedProducts(res.data);
       } catch (err) {}
     };
-    getSearchProducts()
-  },[searchInput])
+    getSearchProducts();
+  }, [searchInput]);
   return (
     <Container>
       <Wrapper>
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search here!" value={searchInput} onChange={(e)=>setSearchInput(e.target.value)}/>
+            <Input
+              placeholder="Search here!"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <FontAwesomeIcon icon={faSearch} />
           </SearchContainer>
           <div className="searchResults">
-              {searchedProducts.map(product=>{
-                return(
-                  <Link className="link" to={`/product/${product._id}`} onClick={()=>setSearchInput("")}>
-
+            {searchedProducts.map((product) => {
+              return (
+                <Link
+                  className="link"
+                  to={`/product/${product._id}`}
+                  onClick={() => setSearchInput("")}
+                >
                   <span>
                     <img src={product.img} width="20px" alt="" />
-                      {product.title}
+                    {product.title}
                   </span>
-                  </Link>
-                )
-              })}
-            </div>
+                </Link>
+              );
+            })}
+          </div>
         </Left>
         <Center>
           <Link className="link" to="/">
-            <Logo >ACME</Logo>
+            <Logo>ACME</Logo>
           </Link>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign in</MenuItem>
+
+          <Link className="link" to="/register">
+            <MenuItem>Register</MenuItem>
+          </Link>
+            <Link className="link" to="/login">
+            <MenuItem>Sign in</MenuItem>
+
+            </Link>
+
           <MenuItem>
             <Link to="/cart" className="link">
               <FontAwesomeIcon icon={faCartShopping} />
@@ -71,7 +89,6 @@ const Container = styled.div`
   top: 0;
   z-index: 11;
   background-color: #fff;
-
 `;
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -84,7 +101,7 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  .searchResults{
+  .searchResults {
     position: absolute;
     top: 40px;
     left: 42px;
@@ -93,17 +110,17 @@ const Left = styled.div`
     z-index: 2;
     display: flex;
     flex-direction: column;
-    span{
+    span {
       border-bottom: 1px solid lightgray;
       padding: 5px;
       cursor: pointer;
-      display:flex;
+      display: flex;
       align-items: center;
-      &:hover{
+      &:hover {
         background-color: black;
         color: #fff;
       }
-      img{
+      img {
         width: 25px;
         padding: 0 5px;
       }
