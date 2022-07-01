@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { categories } from "../data";
 import { CategoryItem } from "./CategoryItem";
+import { mobile, tablet } from "../responsive";
 
 export const Categories = () => {
   return (
@@ -17,4 +18,8 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  ${tablet({
+      gridTemplateColumns: "1fr"
+
+  })}
 `;
